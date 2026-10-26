@@ -1,8 +1,0 @@
-[package]
-name = "fern"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-log = "0.4.34"
-uefi = { version = "0.38.0", features = ["alloc","logger", "panic_handler"] }

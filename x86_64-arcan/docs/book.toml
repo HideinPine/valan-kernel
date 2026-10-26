@@ -1,6 +1,0 @@
-[book]
-title = "The Arcan Book"
-authors = ["Alvan Kipkemoi"]
-description = "Documentation for the Arcan project"
-language = "en"
-src = "src"
