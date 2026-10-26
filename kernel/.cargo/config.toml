@@ -1,10 +1,7 @@
 [build]
-target = "x86_64-arcan.json"
+target = "x86_64-valan.json"
 
 [unstable]
 json-target-spec = true
 build-std = ["core", "alloc", "compiler_builtins"]
 build-std-features = ["compiler-builtins-mem"]
-
-[target.'cfg(target_os = "none")']
-runner = "bootimage runner"
