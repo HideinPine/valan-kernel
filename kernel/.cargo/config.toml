@@ -1,6 +1,9 @@
 [build]
 target = "x86_64-valan.json"
 
+[future-incompat-report]
+frequency = "never"
+
 [unstable]
 json-target-spec = true
 build-std = ["core", "alloc", "compiler_builtins"]

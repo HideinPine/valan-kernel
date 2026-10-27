@@ -8,6 +8,7 @@
 use core::panic::PanicInfo;
 mod interrupts;
 mod vga_buffer;
+use boot_info::layout::BootInfo;
 
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
@@ -17,9 +18,7 @@ fn panic(info: &PanicInfo) -> ! {
 }
 
 #[unsafe(no_mangle)]
-pub extern "C" fn _start() -> ! {
-    //init::initialize(bootinfo);
-    //interrupts::init();
+pub extern "sysv64" fn _start(bootinfo: *const BootInfo) -> ! {
     kernel::init();
 
     loop {}
