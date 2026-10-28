@@ -6,9 +6,12 @@
 #![allow(clippy::empty_loop)]
 
 use core::panic::PanicInfo;
+mod frame_buffer;
 mod interrupts;
-mod vga_buffer;
-use boot_info::layout::BootInfo;
+// mod vga_buffer;
+use boot_info::BootInfo;
+
+use crate::frame_buffer::{Buffer, pack_colors};
 
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
@@ -19,7 +22,9 @@ fn panic(info: &PanicInfo) -> ! {
 
 #[unsafe(no_mangle)]
 pub extern "sysv64" fn _start(bootinfo: *const BootInfo) -> ! {
-    kernel::init();
-
+    frame_buffer::init(bootinfo);
+    interrupts::init();
+    println!("Booting Valan");
+    // println!(" 😃 ");
     loop {}
 }

@@ -11,4 +11,41 @@ name = "kernel"
 version = "0.1.0"
 dependencies = [
  "boot_info",
+ "lazy_static",
+ "once_cell_no_std",
+ "spin 0.5.2",
+ "spleen-font",
 ]
+
+[[package]]
+name = "lazy_static"
+version = "1.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "20870f649af7073d53e38067b2a84312175d56ea15217e1b15bc83506ec50afb"
+dependencies = [
+ "spin 0.9.9",
+]
+
+[[package]]
+name = "once_cell_no_std"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "88d9de24aa391d97829980d784b3f9459f1774aab47790a469aed9e6b5ffbbb3"
+
+[[package]]
+name = "spin"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
+
+[[package]]
+name = "spin"
+version = "0.9.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3763264f6b73151db08c50ff20d7d8a0b8796e021cdea7ceedad07b80155fa0e"
+
+[[package]]
+name = "spleen-font"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "43744d8a750592871f6182fd1b9ba6a341d31da3ebf430c9d9d3634d49296600"

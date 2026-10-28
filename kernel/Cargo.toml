@@ -5,7 +5,13 @@ edition = "2024"
 
 [dependencies]
 boot_info = { version = "0.1.0", path = "../boot_info" }
+spleen-font = { version = "0.2.0", features = ["s12x24"] }
+spin = "0.5.2"
+once_cell_no_std = "0.2.1"
 
+[dependencies.lazy_static]
+version = "1.0"
+features = ["spin_no_std"]
 
 [[bin]]
 name = "kernel"
