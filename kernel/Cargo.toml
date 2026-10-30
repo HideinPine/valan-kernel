@@ -5,9 +5,12 @@ edition = "2024"
 
 [dependencies]
 boot_info = { version = "0.1.0", path = "../boot_info" }
-spleen-font = { version = "0.2.0", features = ["s12x24"] }
-spin = "0.5.2"
+spleen-font = { version = "0.2.0", features = ["s12x24", "s8x16"] }
+spin = { version = "0.12.3", features = ["lazylock"]}
 once_cell_no_std = "0.2.1"
+x86_64 = "0.15.5"
+pic8259 = "0.11.0"
+pc-keyboard = "0.9.0"
 
 [dependencies.lazy_static]
 version = "1.0"
@@ -16,3 +19,5 @@ features = ["spin_no_std"]
 [[bin]]
 name = "kernel"
 path = "src/main.rs"
+test = true
+bench = false

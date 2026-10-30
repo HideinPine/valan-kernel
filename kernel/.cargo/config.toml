@@ -8,3 +8,6 @@ frequency = "never"
 json-target-spec = true
 build-std = ["core", "alloc", "compiler_builtins"]
 build-std-features = ["compiler-builtins-mem"]
+
+[target.x86_64-valan]
+runner = ["powershell", "-File","C:/Users/User/Projects/Valan/kernel/run.ps1"]

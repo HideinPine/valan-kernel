@@ -2,7 +2,7 @@ use boot_info::{BootInfo, FrameBufferCustom, MyPixelFormat};
 use lazy_static::lazy_static;
 use once_cell_no_std::OnceCell;
 use spin::Mutex;
-use spleen_font::{FONT_12X24, PSF2Font};
+use spleen_font::{FONT_8X16, FONT_12X24, PSF2Font};
 
 static FRAMEBUFFER: OnceCell<FrameBufferCustom> = OnceCell::new();
 static COLORS: OnceCell<[u32; 2]> = OnceCell::new();
@@ -10,11 +10,11 @@ static COLORS: OnceCell<[u32; 2]> = OnceCell::new();
 pub fn init(boot: *const BootInfo) {
     let frame_buffer = unsafe { (*boot).frame_buffer.unwrap() };
     FRAMEBUFFER.set(frame_buffer).unwrap();
-    let mut buffer = Buffer::new(&frame_buffer);
+    // let mut buffer = Buffer::new(&frame_buffer);
     let red = pack_colors(frame_buffer.info.pixel_format, 0, 255, 0);
     let black = pack_colors(frame_buffer.info.pixel_format, 0, 0, 0);
     COLORS.set([red, black]);
-    let mut writer = Writer::new(&frame_buffer, red, black);
+    // let mut writer = Writer::new(&frame_buffer, red, black);
 
     // for y in 0..100 {
     //     for x in 0..200 {
@@ -153,5 +153,8 @@ macro_rules! println {
 #[doc(hidden)]
 pub fn _print(args: fmt::Arguments) {
     use core::fmt::Write;
-    WRITER.lock().write_fmt(args).unwrap();
+    use x86_64::instructions::interrupts;
+    interrupts::without_interrupts(|| {
+        WRITER.lock().write_fmt(args).unwrap();
+    })
 }

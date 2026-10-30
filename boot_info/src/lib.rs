@@ -1,6 +1,7 @@
 #![no_std]
 #[allow(unused)]
 #[repr(C)]
+#[derive(Clone, Copy)]
 pub struct BootInfo {
     pub memory_region: Memento,
     pub frame_buffer: Option<FrameBufferCustom>,
@@ -8,6 +9,8 @@ pub struct BootInfo {
     pub kernel_start_addr: u64,
     pub kernel_end_addr: u64,
 }
+
+#[derive(Clone, Copy)]
 pub struct MemoryRegion {
     pub start_addr: u64,
     pub end_addr: u64,
@@ -17,6 +20,7 @@ pub struct MemoryRegion {
 #[repr(u32)]
 #[non_exhaustive]
 #[allow(non_camel_case_types)]
+#[derive(Clone, Copy)]
 pub enum MemoryRegionType {
     RESERVED = 0,
     LOADER_CODE = 1,
@@ -39,6 +43,7 @@ pub enum MemoryRegionType {
 }
 
 //Like multiboot..
+#[derive(Clone, Copy)]
 pub struct Memento {
     pub mmap_addr: *mut MemoryRegion,
     pub mmap_len: u64,
