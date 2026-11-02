@@ -1,3 +1,7 @@
 [submodule "Arcan/x86_64-arcan"]
 path = Arcan/x86_64-arcan
 url = https://github.com/Arcan/x86_64-arcan
+
+[submodule "fern_bootloader"]
+path = fern_bootloader
+url = https://github.com/fern_bootloader
